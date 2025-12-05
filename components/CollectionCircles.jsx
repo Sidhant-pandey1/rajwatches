@@ -3,7 +3,7 @@ import Image from "next/image";
 const collections = [
   {
     name: "Men",
-    imgSrc: "/images/men-Watch.png",
+    imgSrc: "/images/men-watch.png",
     link: "/watches/category/men",
   },
   {
@@ -13,7 +13,7 @@ const collections = [
   },
   {
     name: "Couple",
-    imgSrc: "/images/couple-watch.png", // double-check spelling: couple-watch
+    imgSrc: "/images/Couple-watch.png", // double-check spelling: couple-watch
     link: "/watches/category/couple",
   },
   {
