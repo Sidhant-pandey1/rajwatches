@@ -60,7 +60,7 @@ export default function TestimonialSection() {
     }
   }
 
-  // On wide screens show 2 cards (index and next); on small screens we still render pair but CSS stacks
+  // On wide screens show 2 cards (index and next); on small screens we still render pair but CSS hides second
   const visible = [reviews[index], reviews[(index + 1) % reviews.length]];
 
   const goPrev = () => {
@@ -77,44 +77,46 @@ export default function TestimonialSection() {
   };
 
   return (
-    <section className="testimonial-section bg-[#fcf7f3] py-16 px-4">
+    <section className="testimonial-section bg-[#fcf7f3] py-10 sm:py-16 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto relative text-center">
-        <h2 className="text-3xl sm:text-4xl font-serif font-extrabold text-[#23221d] mb-10 tracking-wide">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-extrabold text-[#23221d] mb-6 sm:mb-10 tracking-wide">
           TESTIMONIALS
         </h2>
 
         {/* Stage: make this the relative overflow-visible container */}
         <div className="testimonial-stage relative flex items-center justify-center">
-          {/* Left arrow (absolute inside stage) */}
+          {/* Left arrow - smaller on mobile, positioned inside on mobile */}
           <button
             onClick={goPrev}
             aria-label="Previous testimonial"
-            className="testimonial-arrow left"
+            className="absolute -left-1 sm:left-0 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white shadow-lg flex items-center justify-center hover:scale-110 transition border border-gray-100"
             onFocus={stopAutoplay}
             onMouseEnter={stopAutoplay}
             onMouseLeave={startAutoplay}
           >
-            <ChevronLeft />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" />
           </button>
 
           {/* Cards container */}
-          <div className="testimonial-cards-container w-full px-6">
-            <div className="testimonial-cards flex gap-8 justify-center items-stretch">
+          <div className="testimonial-cards-container w-full px-12 sm:px-16 lg:px-8">
+            <div className="testimonial-cards flex gap-6 sm:gap-8 justify-center items-stretch">
               {visible.map((r, idx) => (
                 <article
                   key={r.name + idx}
-                  className="testimonial-card bg-[#fff6f0] rounded-2xl p-8 shadow-lg flex-1 min-w-[260px] max-w-[560px]"
+                  className={`testimonial-card bg-white rounded-2xl p-5 sm:p-6 lg:p-8 shadow-md border border-[#f0ebe3] flex-1 min-w-0 max-w-[560px] ${idx === 1 ? "hidden sm:block" : ""
+                    }`}
                 >
-                  <div className="flex items-start gap-6">
-                    <div className="quote-icon text-[#c2ab72] mt-1">
-                      <Quote className="w-10 h-10" />
+                  {/* Stacked layout on mobile for better readability */}
+                  <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-5">
+                    <div className="quote-icon text-[#c2ab72] flex-shrink-0">
+                      <Quote className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10" />
                     </div>
-                    <div className="flex-1">
-                      <p className="text-gray-700 text-[1.02rem] leading-relaxed mb-6 font-medium text-left">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-gray-600 text-[0.9rem] sm:text-base lg:text-[1.05rem] leading-relaxed mb-5 sm:mb-6 font-normal text-left">
                         {r.text}
                       </p>
-                      <p className="text-right text-gray-900 font-bold uppercase tracking-wide">
-                        {r.name}
+                      <p className="text-right text-gray-800 font-semibold uppercase tracking-wider text-xs sm:text-sm">
+                        — {r.name}
                       </p>
                     </div>
                   </div>
@@ -123,30 +125,33 @@ export default function TestimonialSection() {
             </div>
           </div>
 
-          {/* Right arrow */}
+          {/* Right arrow - smaller on mobile, positioned inside on mobile */}
           <button
             onClick={goNext}
             aria-label="Next testimonial"
-            className="testimonial-arrow right"
+            className="absolute -right-1 sm:right-0 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white shadow-lg flex items-center justify-center hover:scale-110 transition border border-gray-100"
             onFocus={stopAutoplay}
             onMouseEnter={stopAutoplay}
             onMouseLeave={startAutoplay}
           >
-            <ChevronRight />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" />
           </button>
         </div>
 
-        {/* Dots/pills below */}
+        {/* Dots/pills below - clean circular dots */}
         <nav
           aria-label="Testimonials pagination"
-          className="mt-8 flex justify-center gap-4 items-center"
+          className="mt-6 sm:mt-8 flex justify-center gap-2 sm:gap-3 items-center"
         >
           {reviews.map((_, idx) => (
             <button
               key={idx}
               onClick={() => goTo(idx)}
               aria-label={`Go to testimonial ${idx + 1}`}
-              className={`testimonial-dot ${idx === index ? "active" : ""}`}
+              className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${idx === index
+                  ? "bg-[#c2ab72]"
+                  : "bg-gray-300 hover:bg-gray-400"
+                }`}
             />
           ))}
         </nav>

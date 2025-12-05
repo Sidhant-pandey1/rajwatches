@@ -50,23 +50,23 @@ export default function HomePage() {
         <CollectionCircles />
 
         {/* Our Top Brands - logos only, centered and luxe */}
-        <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-20">
-          <h2 className="text-5xl font-serif font-extrabold text-[#b89f56] mb-14 text-center drop-shadow-md tracking-wide uppercase">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-10 sm:py-20">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-[#b89f56] mb-6 sm:mb-14 text-center drop-shadow-md tracking-wide uppercase">
             Our Top Brands
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 place-items-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-10 place-items-center">
             {brands.map((brand, idx) => (
               <div
                 key={brand.logo || idx}
-                className="w-full max-w-[260px] h-[220px] rounded-3xl border-4 border-[#b89f56] bg-gradient-to-tr from-[#fefcf6] via-[#f6ecd1] to-[#e9d8a6] shadow-[0_12px_32px_rgba(184,159,86,0.18)] hover:shadow-[0_16px_48px_rgba(184,159,86,0.32)] transition-transform duration-300 transform hover:scale-105 flex items-center justify-center overflow-hidden p-6"
+                className="w-full max-w-[150px] sm:max-w-[200px] lg:max-w-[260px] h-[110px] sm:h-[170px] lg:h-[220px] rounded-xl sm:rounded-2xl lg:rounded-3xl border-2 sm:border-3 lg:border-4 border-[#b89f56] bg-gradient-to-tr from-[#fefcf6] via-[#f6ecd1] to-[#e9d8a6] shadow-[0_6px_16px_rgba(184,159,86,0.15)] sm:shadow-[0_12px_32px_rgba(184,159,86,0.18)] hover:shadow-[0_16px_48px_rgba(184,159,86,0.32)] transition-transform duration-300 transform hover:scale-105 flex items-center justify-center overflow-hidden p-3 sm:p-4 lg:p-6"
                 aria-hidden="true"
               >
                 {/* subtle overlay for depth */}
                 <div className="absolute inset-0 rounded-3xl pointer-events-none bg-gradient-to-b from-black/[0.01] to-transparent opacity-10" />
 
                 {/* Centered logo container: logos are centered and maintain aspect ratio */}
-                <div className="relative w-40 h-28 flex items-center justify-center">
+                <div className="relative w-20 h-14 sm:w-28 sm:h-20 lg:w-40 lg:h-28 flex items-center justify-center">
                   <Image
                     src={brand.logo}
                     alt={brand.name}

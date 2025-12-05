@@ -11,7 +11,7 @@ const HERO_IMAGE = {
 
 export default function HeroSlideshow() {
   return (
-    <section className="relative h-[420px] md:h-[520px] lg:h-[580px] w-full overflow-hidden">
+    <section className="relative h-[320px] sm:h-[420px] md:h-[520px] lg:h-[580px] w-full overflow-hidden">
       {/* Banner image as background */}
       <div
         className="absolute inset-0 w-full h-full"
@@ -27,14 +27,14 @@ export default function HeroSlideshow() {
         {/* Optional: subtle overlay for potential text contrast */}
         <div className="absolute inset-0 bg-black/10" />
       </div>
-      {/* Button positioned at the bottom-right */}
-      <div className="absolute bottom-22 right-74 z-10">
+      {/* Button positioned - centered on mobile, bottom-right on desktop */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:bottom-22 sm:right-74 z-10">
         <Link
           href="/watches/category/all"
-          className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-[#c2ab72] bg-[#c2ab72]/90 text-lg font-semibold text-[#232323] shadow-lg hover:bg-[#c2ab72] transition-transform hover:scale-105"
+          className="inline-flex items-center justify-center px-5 py-2.5 sm:px-8 sm:py-3 rounded-full border-2 border-[#c2ab72] bg-[#c2ab72]/90 text-sm sm:text-lg font-semibold text-[#232323] shadow-lg hover:bg-[#c2ab72] transition-transform hover:scale-105"
         >
           EXPLORE NOW
-          <ChevronRight className="ml-2 w-5 h-5" />
+          <ChevronRight className="ml-1 sm:ml-2 w-4 h-4 sm:w-5 sm:h-5" />
         </Link>
       </div>
     </section>
